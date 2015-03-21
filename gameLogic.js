@@ -8,29 +8,32 @@ function animateForwardMovement() {
         bomb.position.y += forwardSpeed;
 }
 
-function keyboardEvents() {
-    if (keyboard.pressed("A"))
-        moveDirectionPlane = "l";
-    if (keyboard.pressed("S"))
-        moveDirectionPlane = "n";
-    if (keyboard.pressed("D"))
-        moveDirectionPlane = "r";
-    if (keyboard.pressed("R"))
-        location.reload();
-    if (keyboard.pressed("W"))
-        bombDropped = true;
-
-    //animate plane side movement
-    if (moveDirectionPlane == "l") {
-        plane.position.x -= sideSpeed;
-        if (bombDropped == false) {
-            bomb.position.x -= sideSpeed;
-        }
+function planeTurnLeft() {
+    plane.position.x -= sideSpeed;
+    if (bombDropped == false) {
+        bomb.position.x -= sideSpeed;
     }
-    if (moveDirectionPlane == "r") {
-        plane.position.x += sideSpeed;
-        if (bombDropped == false) {
-            bomb.position.x += sideSpeed;
+}
+function planeTurnRight() {
+    plane.position.x += sideSpeed;
+    if (bombDropped == false) {
+        bomb.position.x += sideSpeed;
+    }
+}
+function dropBomb() {
+    bombDropped = true;
+}
+function keyboardEvents() {
+    var keys = {
+        A: planeTurnLeft,
+        D: planeTurnRight,
+        R: location.reload,
+        W: dropBomb
+    };
+
+    for(key in keys){
+        if(keyboard.pressed(key)){
+            keys[key]();
         }
     }
 
