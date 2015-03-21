@@ -49,21 +49,22 @@ function keyboardEvents() {
     }
 }
 
-function animateExplosion() {
-    //animate the explosion
-    if (startExplosion == true && explosion.scale.x < 60) {
-        explosion.scale.x += 3;
-        explosion.scale.y += 3;
-        explosion.scale.z += 3;
-    }
+function incrementAllCoordinates(obj, val) {
+    obj.x += val;
+    obj.y += val;
+    obj.z += val;
+}
 
-    if (startExplosion == true && explosion.scale.x >= 60) {
+function animateExplosion() {
+    if (startExplosion == true && explosion.scale.x < 60) {
+        incrementAllCoordinates(explosion.scale, 3);
+    }
+    else {
         explosion.position.z = -80;
     }
 }
 
 function hitDetectionBomb() {
-    //control hit detection
     if (bomb.position.z <= 8 && gameIsOver == false) {
         gameOver();
     }
