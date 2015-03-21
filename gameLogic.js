@@ -8,17 +8,18 @@ function animateForwardMovement() {
         bomb.position.y += forwardSpeed;
 }
 
-function planeTurnLeft() {
-    plane.position.x -= sideSpeed;
-    if (bombDropped == false) {
-        bomb.position.x -= sideSpeed;
+function planeTurn(direction) {
+    plane.position.x = direction(plane.position.x, sideSpeed);
+    if(!bombDropped){
+        bomb.position.x = direction(bomb.position.x, sideSpeed);
     }
 }
+
+function planeTurnLeft() {
+    planeTurn(function(a,b){ return a-b; });
+}
 function planeTurnRight() {
-    plane.position.x += sideSpeed;
-    if (bombDropped == false) {
-        bomb.position.x += sideSpeed;
-    }
+    planeTurn(function(a,b){ return a+b; });
 }
 function dropBomb() {
     bombDropped = true;
