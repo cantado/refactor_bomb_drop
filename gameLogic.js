@@ -18,11 +18,21 @@ function planeTurn(direction) {
 function planeTurnLeft() {
     planeTurn(function(a,b){ return a-b; });
 }
+
 function planeTurnRight() {
     planeTurn(function(a,b){ return a+b; });
 }
+
 function dropBomb() {
     bombDropped = true;
+}
+
+function animateBombFalling() {
+//animate bomb falling movement
+    if (bombDropped == true && bomb.position.z >= -8) {
+        bomb.position.z -= fallSpeed;
+        bomb.rotation.x -= 0.01;
+    }
 }
 function keyboardEvents() {
     var keys = {
@@ -37,16 +47,10 @@ function keyboardEvents() {
             keys[key]();
         }
     }
-
-    //animate bomb falling movement
-    if (bombDropped == true && bomb.position.z >= -8) {
-        bomb.position.z -= fallSpeed;
-        bomb.rotation.x -= 0.01;
-    }
 }
 
 function animateExplosion() {
-//animate the explosion
+    //animate the explosion
     if (startExplosion == true && explosion.scale.x < 60) {
         explosion.scale.x += 3;
         explosion.scale.y += 3;
@@ -64,11 +68,17 @@ function hitDetectionBomb() {
         gameOver();
     }
 }
-function update(){
+
+function animate() {
     animateForwardMovement();
+    animateBombFalling();
+    animateExplosion();
+}
+
+function update(){
     keyboardEvents();
     hitDetectionBomb();
-    animateExplosion();
+    animate();
 }
 
 module.exports = update;
