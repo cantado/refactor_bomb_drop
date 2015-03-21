@@ -32,7 +32,7 @@ function dropBomb() {
 }
 
 function animateBombFalling() {
-    if (bombDropped == true && bomb.position.z >= -8) {
+    if (bombDropped && bomb.position.z >= -8) {
         bomb.position.z -= fallSpeed;
         bomb.rotation.x -= 0.01;
     }
@@ -68,13 +68,13 @@ function animateExplosion() {
 }
 
 function hitDetectionBomb() {
-    bomb.position.z <= 8 && gameIsOver == false && gameOver();
+    bomb.position.z <= 8 && !gameIsOver && gameOver();
 }
 
 function animate() {
     animateForwardMovement();
     animateBombFalling();
-    startExplosion == true && animateExplosion();
+    startExplosion && animateExplosion();
 }
 
 function update(){
