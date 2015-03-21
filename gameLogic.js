@@ -1,6 +1,4 @@
-/**
- * animate forward movement of plane camera and bomb
- */
+
 function animateForwardMovement() {
     animateMoveForward(plane);
     animateMoveForward(camera);
@@ -34,7 +32,6 @@ function dropBomb() {
 }
 
 function animateBombFalling() {
-//animate bomb falling movement
     if (bombDropped == true && bomb.position.z >= -8) {
         bomb.position.z -= fallSpeed;
         bomb.rotation.x -= 0.01;
@@ -62,7 +59,7 @@ function incrementAllCoordinates(obj, val) {
 }
 
 function animateExplosion() {
-    if (startExplosion == true && explosion.scale.x < 60) {
+    if (explosion.scale.x < 60) {
         incrementAllCoordinates(explosion.scale, 3);
     }
     else {
@@ -77,7 +74,7 @@ function hitDetectionBomb() {
 function animate() {
     animateForwardMovement();
     animateBombFalling();
-    animateExplosion();
+    startExplosion == true && animateExplosion();
 }
 
 function update(){
