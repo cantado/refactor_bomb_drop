@@ -2,10 +2,16 @@
  * animate forward movement of plane camera and bomb
  */
 function animateForwardMovement() {
-    plane.position.y += forwardSpeed;
-    camera.position.y += forwardSpeed;
-    if (bomb.position.z >= 8)
-        bomb.position.y += forwardSpeed;
+    animateMoveForward(plane);
+    animateMoveForward(camera);
+    if (bomb.position.z >= 8) {
+        animateMoveForward(bomb);
+    }
+}
+
+function animateMoveForward(obj, val) {
+    val = val || forwardSpeed;
+    obj.position.y += val;
 }
 
 function planeTurn(direction) {
@@ -42,7 +48,7 @@ function keyboardEvents() {
         W: dropBomb
     };
 
-    for(key in keys){
+    for(var key in keys){
         if(keyboard.pressed(key)){
             keys[key]();
         }
@@ -65,9 +71,7 @@ function animateExplosion() {
 }
 
 function hitDetectionBomb() {
-    if (bomb.position.z <= 8 && gameIsOver == false) {
-        gameOver();
-    }
+    bomb.position.z <= 8 && gameIsOver == false && gameOver();
 }
 
 function animate() {
