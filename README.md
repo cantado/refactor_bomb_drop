@@ -13,11 +13,11 @@
 to test/coverage the project open the bash and navigate to the project directory and execute following command
 
 * for test (mocha):
-  ```git
+  ```
     mocha
   ```
 * for coverage (istanbul):
-  ```git
+  ```
     npm run cover
   ```
   * this will create a **index.html** in *coverage/lcov-report*. Open it with a browser and see coverage.
