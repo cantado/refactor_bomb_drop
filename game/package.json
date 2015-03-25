@@ -1,0 +1,16 @@
+{
+  "name": "game",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cover": "istanbul cover ./node_modules/.bin/_mocha test/GameSpec.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "~2.2.1",
+    "istanbul": "~0.3.8"
+  }
+}

@@ -1,0 +1,57 @@
+body{
+	background-color: white;
+	overflow: hidden;
+}
+
+p{
+	font-size: 12px;
+}
+
+h1{
+	font-family: 'Trade Winds', cursive;
+}
+
+.logo{
+	z-index: 2;
+	position: absolute;
+	left: 30px;
+	top: 10px;
+}
+
+.infotext1{
+	z-index: 2;
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+}
+
+.infotext1 p{
+	color: #fff;
+}
+
+.infotext2{
+	z-index: 2;
+	position: absolute;
+	right: 45%;
+	bottom: 30px;
+	background-color: #aaa;
+	opacity: 0.7;
+	padding: 5px;
+	border: #aaa solid 1px;
+	border-radius: 20%;
+}
+
+.hidden{
+	position:absolute;
+	visibility: hidden;
+}
+
+.wasd{
+	width: 20%;
+	margin-left: 80%;
+}
+
+.r{
+	width: 7%;
+	margin-left: 90%;
+}
